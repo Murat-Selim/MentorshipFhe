@@ -3,6 +3,6 @@
     "builder": "NIXPACKS"
   },
   "deploy": {
-    "startCommand": "pnpm --filter vue-showcase build && npx serve dist -p $PORT"
+    "startCommand": "pnpm --filter vue-showcase build && cd packages/vue-showcase && npx serve dist -p $PORT"
   }
 }
