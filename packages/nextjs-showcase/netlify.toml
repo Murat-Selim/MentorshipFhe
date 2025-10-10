@@ -1,5 +1,5 @@
 [build]
-  command = "pnpm install && pnpm --filter nextjs-showcase run build"
+  command = "pnpm install && pnpm sdk:build && pnpm --filter nextjs-showcase run build"
   publish = "packages/nextjs-showcase/.next"
 
 [build.environment]
