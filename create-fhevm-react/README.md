@@ -22,6 +22,11 @@ npm start
 - **Deployed FHE Counter Contract** for testing on Sepolia testnet
 - Public decryption demo with hardcoded ciphertexts
 - Ready-to-use React hooks
+- **Complete Hardhat development environment** with:
+  - FHE Counter smart contract
+  - Deployment scripts for Sepolia testnet
+  - Contract testing utilities
+  - TypeScript support for contracts
 - **Universal FHEVM SDK** with utilities for:
   - FHEVM initialization
   - Encrypted inputs creation
@@ -49,6 +54,25 @@ The generated app includes a **pre-deployed FHE Counter Contract** on Sepolia te
 - ✅ **Beautiful UI**: Zama design system with Tailwind CSS
 - ✅ **Real FHEVM operations**: Actual encryption/decryption functionality
 - ✅ **Live contract**: Pre-deployed FHE counter for immediate testing
+- ✅ **Complete development environment**: Includes Hardhat for smart contract development
+
+## Smart Contract Development
+
+The generated app includes a complete Hardhat development environment:
+
+```bash
+# Navigate to the hardhat directory
+cd hardhat
+
+# Install dependencies
+npm install
+
+# Deploy to Sepolia testnet
+npm run deploy
+
+# Run tests
+npm test
+```
 
 ## Requirements
 

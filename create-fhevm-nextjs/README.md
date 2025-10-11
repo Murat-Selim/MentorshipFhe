@@ -22,6 +22,7 @@ npm run dev
 - ✅ **Production ready** - Optimized for deployment
 - ✅ **Deployed FHE Counter Contract** - Live on Sepolia testnet
 - ✅ **Universal FHEVM SDK** - Complete utilities for FHE operations
+- ✅ **Complete Hardhat environment** - Smart contract development included
 
 ## 🎯 Features
 
@@ -134,6 +135,24 @@ The generated app includes a **pre-deployed FHE Counter Contract** on Sepolia te
 - **Encrypted Inputs Creation** - Generate encrypted data for contracts
 - **User Decryption** - EIP-712 signed decryption flows
 - **Public Decryption** - No signature required decryption
+
+## 🔨 Smart Contract Development
+
+The generated app includes a complete Hardhat development environment:
+
+```bash
+# Navigate to the hardhat directory
+cd hardhat
+
+# Install dependencies
+npm install
+
+# Deploy to Sepolia testnet
+npm run deploy
+
+# Run tests
+npm test
+```
 
 ## 📚 Learn More
 

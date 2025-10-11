@@ -283,6 +283,7 @@ npm run dev
 - ✅ **Framework-Agnostic Core** - Same FHEVM functionality everywhere
 - ✅ **TypeScript Support** - Full type safety
 - ✅ **Production Ready** - Optimized for deployment
+- ✅ **Complete Hardhat Environment** - Smart contract development included
 
 ### **🔧 Universal FHEVM SDK - Same SDK, All Frameworks**
 
