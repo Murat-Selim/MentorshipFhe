@@ -4,15 +4,34 @@ A framework-agnostic frontend toolkit that helps developers run confidential dAp
 
 ## 🏆 **Bounty Requirements Met**
 
-- ✅ **Framework-agnostic** - Works in React, Next.js, Vue, Node.js
-- ✅ **Real FHEVM functionality** - EIP-712 decryption, encryption, contract interactions
-- ✅ **Wagmi-like API** - Hooks/composables for each framework
-- ✅ **Multiple environments** - All major frontend frameworks + Node.js
-- ✅ **Clean, reusable** - Modular SDK structure
-- ✅ **Documentation** - Clear examples and READMEs
-- ✅ **Universal SDK** - Single package works across all frameworks
-- ✅ **TypeScript support** - Full type safety across all implementations
-- ✅ **Live examples** - Real FHEVM interactions on Sepolia testnet
+### **✅ 1. Can be imported into any dApp**
+**Implementation:** Universal SDK with framework adapters
+- **React:** `import { useWallet, useFhevm, useContract } from '@fhevm-sdk'` ([src/adapters/react.ts](packages/fhevm-sdk/src/adapters/react.ts))
+- **Next.js:** `import { useWallet, useFhevm, useContract } from '@fhevm-sdk'` ([src/adapters/react.ts](packages/fhevm-sdk/src/adapters/react.ts))
+- **Vue:** `import { useWalletVue, useFhevmVue } from '@fhevm-sdk'` ([src/adapters/vue.ts](packages/fhevm-sdk/src/adapters/vue.ts))
+- **Node.js:** `import { FhevmNode } from '@fhevm-sdk'` ([src/adapters/node.ts](packages/fhevm-sdk/src/adapters/node.ts))
+- **Vanilla JS:** `import { FhevmVanilla } from '@fhevm-sdk'` ([src/adapters/vanilla.ts](packages/fhevm-sdk/src/adapters/vanilla.ts))
+
+### **✅ 2. Utilities for initialization, encrypted inputs, and decryption flows**
+**Implementation:** Complete FHEVM operations with EIP-712 signing
+- **Initialization:** `initializeFheInstance()` ([src/core/fhevm.ts:15-35](packages/fhevm-sdk/src/core/fhevm.ts#L15-L35))
+- **Encrypted Inputs:** `createEncryptedInput()` ([src/core/encryption.ts:31-75](packages/fhevm-sdk/src/core/encryption.ts#L31-L75))
+- **User Decryption (EIP-712):** `requestUserDecryption()` ([src/core/decryption.ts:12-59](packages/fhevm-sdk/src/core/decryption.ts#L12-L59))
+- **Public Decryption:** `fetchPublicDecryption()` ([src/core/decryption.ts:64-69](packages/fhevm-sdk/src/core/decryption.ts#L64-L69))
+
+### **✅ 3. Wagmi-like modular API structure**
+**Implementation:** Framework-specific hooks and composables
+- **React/Next.js Hooks:** `useWallet()`, `useFhevm()`, `useContract()`, `useFhevmOperations()` ([src/adapters/react.ts:20-265](packages/fhevm-sdk/src/adapters/react.ts#L20-L265))
+- **Vue Composables:** `useWalletVue()`, `useFhevmVue()`, `useContractVue()` ([src/adapters/vue.ts:15-200](packages/fhevm-sdk/src/adapters/vue.ts#L15-L200))
+- **Core Independence:** Framework adapters import from core modules ([src/core/index.ts](packages/fhevm-sdk/src/core/index.ts))
+
+### **✅ 4. Reusable components covering different encryption/decryption scenarios**
+**Implementation:** Multiple scenarios with real-world examples
+- **Private User Decryption:** EIP-712 signature required ([React showcase:151-169](packages/react-showcase/src/App.tsx#L151-L169))
+- **Public Decryption:** No signature required ([React showcase:238-264](packages/react-showcase/src/App.tsx#L238-L264))
+- **Input Encryption:** For contract interactions ([React showcase:183-189](packages/react-showcase/src/App.tsx#L183-L189))
+- **Multi-value Encryption:** `encryptValue()` for arrays ([src/core/encryption.ts:11-26](packages/fhevm-sdk/src/core/encryption.ts#L11-L26))
+- **Transaction Execution:** Complete encrypted transaction flow ([src/adapters/react.ts:219-242](packages/fhevm-sdk/src/adapters/react.ts#L219-L242))
 
 ## 📁 **Project Structure**
 
@@ -410,12 +429,26 @@ await fhevm.initialize();
 ```
 
 ### **Installation**
-```bash
-# Install the SDK
-pnpm add @fhevm-sdk
 
-# Import hooks for your framework
-import { useWallet, useFhevm, useContract, useFhevmOperations } from '@fhevm-sdk';
+**Option 1: NPX Packages (Recommended)**
+```bash
+# Create a new FHEVM project instantly
+npx create-fhevm-react my-app
+npx create-fhevm-nextjs my-app  
+npx create-fhevm-vue my-app
+```
+
+**Option 2: Clone Repository**
+```bash
+# Clone the repository
+git clone https://github.com/your-username/fhevm-react-template.git
+cd fhevm-react-template
+
+# Install dependencies
+pnpm install
+
+# Build the SDK
+pnpm sdk:build
 ```
 
 ## 🌐 **Live Examples**
@@ -449,12 +482,12 @@ All examples use the **Zama theme**:
 
 ### **Build All**
 ```bash
-pnpm build
+pnpm sdk:build
 ```
 
-### **Test All**
+### **Start Development**
 ```bash
-pnpm test
+pnpm start
 ```
 
 ### **Lint All**
