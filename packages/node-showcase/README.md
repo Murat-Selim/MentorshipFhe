@@ -15,17 +15,18 @@ pnpm install
 cp .env.example .env
 # Edit .env with your private key and RPC URL
 
-# Run the complete FHEVM operations test
+# Run the complete FHEVM operations test (uses our Universal SDK)
 node test-fhevm-operations.js
 
-# Or start the showcase
+# Or start the showcase (also uses our Universal SDK)
 pnpm start
 ```
 
 ## ✨ **Features**
 
 - ✅ **REAL FHEVM operations** - No more mocks!
-- ✅ **Our FHEVM SDK working in Node.js** - Proves framework-agnostic capability
+- ✅ **Our Universal FHEVM SDK** - Both test file and showcase use our SDK
+- ✅ **Framework-agnostic capability** - Proves Node.js compatibility
 - ✅ **Server-side encryption/decryption** - Actual cryptographic operations
 - ✅ **Real blockchain interactions** - Live Sepolia testnet
 - ✅ **Hardcoded configuration** - No environment variables needed
@@ -41,9 +42,9 @@ pnpm start
 - **Dotenv** - Environment variables
 - **@fhevm-sdk** - Universal FHEVM SDK with Node.js adapter
 
-## 🎣 **Our FHEVM SDK Node.js Adapter Usage**
+## 🎣 **Our Universal FHEVM SDK Usage**
 
-This showcase demonstrates that **our FHEVM SDK works perfectly in Node.js** using the `FhevmNode` adapter:
+Both the **test file** (`test-fhevm-operations.js`) and **showcase** (`src/index.ts`) demonstrate that **our Universal FHEVM SDK works perfectly in Node.js** using the `FhevmNode` adapter:
 
 ```typescript
 import { FhevmNode } from '@fhevm-sdk';
@@ -121,17 +122,17 @@ The Node.js showcase uses **our FHEVM SDK's** `FhevmNode` class, proving it work
 ```
 packages/node-showcase/
 ├── src/
-│   └── index.ts           # Main showcase application
-├── test-fhevm-operations.js  # Complete FHEVM operations test
+│   └── index.ts           # Main showcase using our Universal FHEVM SDK
+├── test-fhevm-operations.js  # Complete test using our Universal FHEVM SDK
 ├── .env                   # Environment variables
 └── package.json           # Dependencies and scripts
 ```
 
 ## 🎨 **CLI Output**
 
-### **Complete FHEVM Operations Test**
+### **Complete Universal FHEVM SDK Test**
 
-The `test-fhevm-operations.js` demonstrates the full workflow:
+The `test-fhevm-operations.js` demonstrates the full workflow using **our Universal FHEVM SDK**:
 
 ```bash
 🧪 Testing REAL FHEVM operations in Node.js environment...
