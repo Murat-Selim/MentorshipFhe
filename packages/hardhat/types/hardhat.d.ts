@@ -49,6 +49,14 @@ declare module "hardhat/types/runtime" {
       name: "FHECounter",
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.FHECounter__factory>;
+    getContractFactory(
+      name: "ReviewCardsFHE",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.ReviewCardsFHE__factory>;
+    getContractFactory(
+      name: "SimpleVoting_uint32",
+      signerOrOptions?: ethers.Signer | FactoryOptions
+    ): Promise<Contracts.SimpleVoting_uint32__factory>;
 
     getContractAt(
       name: "EthereumConfig",
@@ -95,6 +103,16 @@ declare module "hardhat/types/runtime" {
       address: string | ethers.Addressable,
       signer?: ethers.Signer
     ): Promise<Contracts.FHECounter>;
+    getContractAt(
+      name: "ReviewCardsFHE",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.ReviewCardsFHE>;
+    getContractAt(
+      name: "SimpleVoting_uint32",
+      address: string | ethers.Addressable,
+      signer?: ethers.Signer
+    ): Promise<Contracts.SimpleVoting_uint32>;
 
     deployContract(
       name: "EthereumConfig",
@@ -132,6 +150,14 @@ declare module "hardhat/types/runtime" {
       name: "FHECounter",
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.FHECounter>;
+    deployContract(
+      name: "ReviewCardsFHE",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ReviewCardsFHE>;
+    deployContract(
+      name: "SimpleVoting_uint32",
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SimpleVoting_uint32>;
 
     deployContract(
       name: "EthereumConfig",
@@ -178,6 +204,16 @@ declare module "hardhat/types/runtime" {
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.FHECounter>;
+    deployContract(
+      name: "ReviewCardsFHE",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.ReviewCardsFHE>;
+    deployContract(
+      name: "SimpleVoting_uint32",
+      args: any[],
+      signerOrOptions?: ethers.Signer | DeployContractOptions
+    ): Promise<Contracts.SimpleVoting_uint32>;
 
     // default types
     getContractFactory(

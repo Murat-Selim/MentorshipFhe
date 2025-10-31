@@ -65,10 +65,18 @@ module.exports = {
       webpackConfig.resolve = webpackConfig.resolve || {};
       
       // Alias vue to empty module to prevent resolution errors from @fhevm-sdk
+      // Also alias the Vue adapter directly to prevent it from being bundled
       // This MUST be set before webpack processes any modules
+      const vueAdapterStub = path.resolve(__dirname, 'src/vue-adapter-stub.js');
       webpackConfig.resolve.alias = {
         ...webpackConfig.resolve.alias,
-        'vue': path.resolve(__dirname, 'src/vue-empty.js')
+        'vue': path.resolve(__dirname, 'src/vue-empty.js'),
+        // Directly alias Vue adapter paths to stub (all possible formats)
+        '@fhevm-sdk/dist/adapters/vue.js': vueAdapterStub,
+        '@fhevm-sdk/src/adapters/vue.js': vueAdapterStub,
+        '../fhevm-sdk/dist/adapters/vue.js': vueAdapterStub,
+        '../../fhevm-sdk/dist/adapters/vue.js': vueAdapterStub,
+        './adapters/vue.js': vueAdapterStub, // Relative from index.js
       };
       
       // Ensure proper module resolution order to prevent multiple React instances
@@ -78,12 +86,42 @@ module.exports = {
         'node_modules'
       ];
       
-      // Ignore vue imports from @fhevm-sdk (additional safeguard)
+      // Replace Vue adapter module entirely to prevent bundling Vue code
+      // This must match all possible path formats:
+      // - @fhevm-sdk/dist/adapters/vue.js
+      // - fhevm-sdk/dist/adapters/vue.js
+      // - ../fhevm-sdk/dist/adapters/vue.js
+      // - packages/fhevm-sdk/dist/adapters/vue.js
+      // - ./adapters/vue.js (relative from index.js)
       webpackConfig.plugins = webpackConfig.plugins || [];
+      
+      // Add replacement plugin to catch Vue adapter imports
+      const vueAdapterStubPath = path.resolve(__dirname, 'src/vue-adapter-stub.js');
+      webpackConfig.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /.*[\/\\]fhevm-sdk[\/\\].*[\/\\]adapters[\/\\]vue\.js$/,
+          vueAdapterStubPath
+        )
+      );
+      
+      // Also catch relative paths from within fhevm-sdk
+      webpackConfig.plugins.push(
+        new webpack.NormalModuleReplacementPlugin(
+          /\.\/adapters\/vue\.js$/,
+          (resource) => {
+            // Only replace if the context is from fhevm-sdk
+            if (resource.context && resource.context.includes('fhevm-sdk')) {
+              resource.request = vueAdapterStubPath;
+            }
+          }
+        )
+      );
+      
+      // Ignore vue imports from @fhevm-sdk (additional safeguard)
       webpackConfig.plugins.push(
         new webpack.IgnorePlugin({
           resourceRegExp: /^vue$/,
-          // Match any context that contains @fhevm-sdk
+          // Match any context that contains fhevm-sdk
           contextRegExp: /fhevm-sdk/
         })
       );
@@ -94,12 +132,6 @@ module.exports = {
         '@zama-fhe/relayer-sdk/node': 'commonjs @zama-fhe/relayer-sdk/node'
         // Note: ethers is browser-compatible, so we bundle it instead of externalizing
       });
-      
-      webpackConfig.resolve.modules = [
-        path.resolve(__dirname, 'node_modules'), // Prioritize app's node_modules
-        ...(webpackConfig.resolve.modules || ['node_modules']),
-        'node_modules'
-      ];
 
       // Ensure symlinks are resolved to prevent duplicate React instances
       webpackConfig.resolve.symlinks = true;
