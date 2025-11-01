@@ -367,7 +367,7 @@ pnpm --filter node-showcase cli        # Non-interactive CLI mode
 
 ### **HTTP Server Mode**
 
-Run the node-showcase as an HTTP server with API endpoints:
+Run the following only in the  node-showcase dir  as an HTTP server with API endpoints:
 
 ```bash
 # Start the HTTP server
@@ -508,8 +508,11 @@ The Explorer will:
 5. Track your session and provide a summary at the end
 
 This is the perfect tool for developers learning FHEVM or demonstrating the SDK's capabilities to others!
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
 
 ## 📚 **Showcase Documentation**
 
