@@ -42,7 +42,7 @@ async function initializeBrowserFheInstance() {
 
   // Initialize SDK with CDN
   await initSDK();
-  console.log('✅ FHEVM SDK initialized with CDN');
+    console.log('✅ FHEVM SDK initialized with CDN');
   
   const config = { ...SepoliaConfig, network: window.ethereum };
   
