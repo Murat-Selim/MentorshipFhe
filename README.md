@@ -365,7 +365,6 @@ Clone and run the full development environment:
 ```bash
 # 1. Clone repository
 git clone https://github.com/your-username/fhevm-react-template.git
-cd fhevm-react-template
 
 # 2. Install dependencies
 pnpm install
