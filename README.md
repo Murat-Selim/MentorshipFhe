@@ -12,22 +12,16 @@ Clone and run the full development environment:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/your-username/fhevm-react-template.git
-cd fhevm-react-template
+git clone https://github.com/Murat-Selim/MentorhsipFhe.git
+cd MentorshipFhe
 
 # 2. Install dependencies
-pnpm install
+npm install
 
-# 3. Build SDK
-pnpm sdk:build
+# 4. Deploy contracts
+npx hardhat deploy --network sepolia   # Deploy all contracts including Mentorship
 
-# 4. Run showcase
-pnpm --filter react-showcase start      # React on :3000
-pnpm --filter nextjs-showcase dev      # Next.js on :3001
-pnpm --filter vue-showcase dev         # Vue on :3003
-pnpm --filter node-showcase explorer   # Interactive CLI mode (recommended)
-pnpm --filter node-showcase start      # HTTP server mode
-pnpm --filter node-showcase cli        # Non-interactive CLI mode
-
+# 5. Run showcase
+npm run dev
 
 ```
