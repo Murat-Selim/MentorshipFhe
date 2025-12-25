@@ -20,9 +20,7 @@ export type { IFHEVMExecutor } from "./@fhevm/solidity/lib/Impl.sol/IFHEVMExecut
 export { IFHEVMExecutor__factory } from "./factories/@fhevm/solidity/lib/Impl.sol/IFHEVMExecutor__factory";
 export type { IInputVerifier } from "./@fhevm/solidity/lib/Impl.sol/IInputVerifier";
 export { IInputVerifier__factory } from "./factories/@fhevm/solidity/lib/Impl.sol/IInputVerifier__factory";
-export type { FHECounter } from "./contracts/FHECounter";
-export { FHECounter__factory } from "./factories/contracts/FHECounter__factory";
-export type { ReviewCardsFHE } from "./contracts/ReviewCardsFHE_uint32.sol/ReviewCardsFHE";
-export { ReviewCardsFHE__factory } from "./factories/contracts/ReviewCardsFHE_uint32.sol/ReviewCardsFHE__factory";
-export type { SimpleVoting_uint32 } from "./contracts/SimpleVoting_uint32";
-export { SimpleVoting_uint32__factory } from "./factories/contracts/SimpleVoting_uint32__factory";
+export type { IERC20 } from "./contracts/Mentorship.sol/IERC20";
+export { IERC20__factory } from "./factories/contracts/Mentorship.sol/IERC20__factory";
+export type { Mentorship } from "./contracts/Mentorship.sol/Mentorship";
+export { Mentorship__factory } from "./factories/contracts/Mentorship.sol/Mentorship__factory";
